@@ -1,0 +1,144 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+header {
+    background-color: #333;
+    padding: 20px 0;
+}
+
+.logo {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    margin: 0 20px;
+}
+
+.navbar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    padding: 14px 16px;
+    display: inline-block;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.navbar a:hover {
+    color: #007bff;
+}
+
+.seats-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.bus-layout {
+    display: grid;
+    grid-template-columns: repeat(5, 50px);
+    grid-gap: 10px;
+}
+
+.seat {
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.seat.occupied {
+    background-color: red;
+    cursor: not-allowed;
+}
+
+.seat.selected {
+    background-color: yellow;
+}
+
+.clear {
+    grid-column: span 5;
+}
+
+.total-fare {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.continue-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.continue-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.about-section {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0px;
+    background-color: #333;
+    padding: 50px 0;
+    color: #fff; 
+    padding-left: 50px;
+}
+
+.containers {
+    width: 200px;
+    text-align: center;
+}
+
+.containers h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.containers p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+footer {
+    margin-top: 1px;
+    text-align: center;
+    background-color: #333;
+    padding: 50px 0;
+    color: #fff;
+}

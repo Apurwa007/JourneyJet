@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now</title>
+    <link rel="stylesheet" href="bookNowstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        function validateForm() {
+            const from = document.getElementById("from");
+            const to = document.getElementById("to");
+            const date = document.getElementById("date");
+
+            let valid = true;
+
+            if (from.value === "") {
+                from.setCustomValidity("Please fill this field");
+                from.reportValidity();
+                valid = false;
+            } else {
+                from.setCustomValidity("");
+            }
+
+            if (to.value === "") {
+                to.setCustomValidity("Please fill this field");
+                to.reportValidity();
+                valid = false;
+            } else {
+                to.setCustomValidity("");
+            }
+
+            if (date.value === "") {
+                date.setCustomValidity("Please fill this field");
+                date.reportValidity();
+                valid = false;
+            } else {
+                const currentDate = new Date().toISOString().split('T')[0];
+                if (date.value < currentDate) {
+                    date.setCustomValidity("Date cannot be in the past");
+                    date.reportValidity();
+                    valid = false;
+                } else {
+                    date.setCustomValidity("");
+                }
+            }
+
+            return valid;
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const form = document.querySelector('.booking-form');
+            const button = form.querySelector('button');
+
+            form.addEventListener('input', () => {
+                if (validateForm()) {
+                    button.disabled = false;
+                } else {
+                    button.disabled = true;
+                }
+            });
+
+            button.disabled = true; // Initially disable the button
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <img src="logo.png" alt="JourneyJet Logo" class="logo" style="height: 100px;">
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="services.html">SERVICES</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn">ACCOUNT <i class="fa fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#">Cancel Ticket</a>
+                            <a href="#">Change Travel Date</a>
+                            <a href="#">Show My Ticket</a>
+                            <a href="sign_up_in.html">Sign Up/Sign In</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Purulia's Online Bus Ticket Booking Site</h1><br><br>
+            <form class="booking-form" action="retrieve_data.php" method="GET" onsubmit="return validateForm()">
+                <div class="form-group">
+                    <label for="from">From</label>
+                    <input type="text" id="from" name="from" placeholder="Enter departure city">
+                </div>
+                <div class="form-group">
+                    <label for="to">To</label>
+                    <input type="text" id="to" name="to" placeholder="Enter destination city">
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date">
+                </div>
+                <button type="submit">Search Buses</button>
+            </form>
+        </div>
+    </section>
+    <section class="about-section">
+        <div class="containers">
+            <h2>About Us</h2>
+            <p>JourneyJet is dedicated to simplifying seat reservations in buses, ensuring a comfortable and secure journey for all passengers.</p>
+        </div>
+        <div class="container">
+            <h2>Our Services</h2>
+            <p>Seat Reservation</p>
+            <p>E-Ticketing</p>
+            <p>Live GPS Tracking</p>
+            <p>Customer Support</p>
+        </div>
+        <div class="container">
+            <h2>Contact</h2>
+            <p>+91 xxxxxxxxxx</p>
+        </div>
+        <div class="container">
+            <h2>Email Address</h2>
+            <p>JourneyJet@gmail.com</p>
+        </div>
+    </section>
+    <footer>
+        <p>Copyright © 2024 JourneyJet</p>
+    </footer>
+</body>
+</html>
